@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bella Plata</title>
+    <style>
+        body {
+            background-color: #E6DDD8;
+        }
+        .cabecalho {
+            text-align: center;
+            background-color: #A3755F;
+            font-size: 40px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        .valComp {
+            margin-top: 10px;
+        }
+        .valluc {
+            margin-top: 10px;
+        }
+        .texSup {
+            margin-top: 40px;
+            font-size: 30px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        .texInf {
+            margin-top: 30px;
+            font-size: 30px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="cabecalho">Bella Plata</div>
+    <div class="texSup">Insira abaixo o valor do produto: </div>
+    <div class="valComp"><input type="text" name="valorDeCompra" id="valorDeCompra"></div>
+    <div class="texInf">Insira abaixo a % de lucro esperado </div>
+    <div class="valluc"></div><input type="text" name="lucratividade" id="lucratividade"></div>
+    <input type="button" value="calcular" onclick="calcule()">
+    <div id="resultado"></div>
+    <script>
+        function calcule() {
+            var compreiPor = document.getElementById('valorDeCompra')
+            var vendoPor = document.getElementById('lucratividade')
+            var compra = Number(compreiPor.value)
+            var venda = Number(vendoPor.value)
+            var compraFrete = compra + 1.50
+            var porcento = compraFrete / 100
+            var final = porcento * venda
+            var precoFinal = final + compraFrete
+            const precoDevenda = precoFinal.toLocaleString('pt-Br', {style: 'currency', currency: 'BRL'})
+            resultado.innerHTML = `O valor de revenda é ${precoDevenda}`
+        }
+    </script>
+</body>
+</html>
